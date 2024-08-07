@@ -1,0 +1,737 @@
+body{
+  background-color: #000;
+}
+
+ .navi {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent; /* Pure black background */
+  padding: 15px 100px;
+ 
+}
+
+/* Logo Styling */
+.navi h3 {
+  color: #66fcf1; 
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+.items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+  font-family: 'Lucida Sans', 'Lucida Grande', Geneva, Verdana, sans-serif;
+}
+.items h3 {
+  color: #66fcf1; 
+  font-size: 1.2rem;
+  transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  cursor: pointer;
+  margin: 0;
+  
+}
+
+.items h3:hover {
+  color: #49c5b6; 
+  transform: scale(1.1); 
+}
+
+.items h3.active {
+  border-bottom: 2px solid #49c5b6; 
+}
+.items button{
+  border: none;
+  background-color: transparent;
+}
+.search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  flex-wrap: nowrap;
+}
+
+.search input {
+  height: 60px;
+  width: 450px;
+  border-radius: 10px ;
+  font-size: 25px;
+  border: 3px solid #66fcf1;
+  background-color: transparent;
+  color: #FFF;
+}
+
+
+.cartmain {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 50px;
+ 
+}
+
+.cardcart {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: 10px;
+  flex-direction: row;
+  background-color: #c5c6c7;
+  padding: 10px;
+  width: 700px;
+  height: 200px;
+  border-bottom: 1px solid #000;
+  
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.cartimg {
+  height: 200px;
+  width: 200px;
+  margin-right: 50px;
+  object-fit: fill;
+  border-radius: 10px;
+}
+
+.incdec {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+
+
+.remove {
+  display: flex;
+  margin-left: 160px;
+  height: 60px;
+  width: 60px;
+  margin-top: -80px;
+  border: none;
+  background-color: transparent;
+}
+.incdec button {
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.incdec > .remove {
+  width: 120px;
+  height: 50px;
+}
+
+.incdec p {
+  font-size: 30px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 5px;           
+}
+
+
+
+
+
+
+
+/* Checkout Summary Section */
+.checkout {
+  position: fixed;
+  top: 80px;
+  right: 50px;
+  width: 350px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.head {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.checkout h3, .checkout h4, .checkout h2 {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.checkout h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.checkout button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 28px;
+  background-color: #66fcf1
+  ;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.checkout button:hover {
+  background-color: #00d4ff;
+}
+
+
+
+/*carousel && about*/
+.carousel-container {
+  width: 80%;
+  margin: auto;
+  padding: 40px 0;
+  background-color: #c5c6c7;
+}
+
+.carousel-slide {
+  position: relative;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-slide:hover {
+  transform: scale(1.05);
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #c5c6c7;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #66fcf1;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #49c5b6;
+}
+
+.bait{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 40px;
+  margin-bottom: 100px;
+  
+}
+.mi{
+  height: 370px;
+  width: 370px;
+  border: 1px solid #66fcf1;
+  border-radius: 28px;
+}
+#one{
+  background-size: contain;
+  background-image: url('https://yamaha.ndcdn.in/media/wysiwyg/pss-e-30_1.jpg');
+}
+
+#two{
+  background-size: contain;
+  background-image: url('https://yamaha.ndcdn.in/media/wysiwyg/revstar-desktop-9nov.jpg');
+}
+
+#three{
+  background-size: contain;
+  background-image: url('https://yamaha.ndcdn.in/media/wysiwyg/P-145-desktop-9nov.jpg');
+}
+#four{
+  background-size: contain;
+  background-image: url('./assets/fourmi.png');
+}
+#five{
+  background-size: contain;
+  background-image: url('https://yamaha.ndcdn.in/media/wysiwyg/electronic-drum.png');
+}
+
+#six{
+  background-size: contain;
+  background-image: url('https://yamaha.ndcdn.in/media/wysiwyg/CLP-745-desktop-9nov.jpg');
+}
+
+.about button{
+  height: 60px;
+  width: 150px;
+  border-radius: 28px;
+  border: 1px solid #66fcf1;
+  background-color: #66fcf1;
+  margin-left:700px;
+}
+
+
+/***/
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 420px;
+  height: 600px;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  position: relative;
+  background-color: #fff;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card > img {
+  margin: 20px auto 0 auto;
+  height: 280px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 1.8rem;
+  margin: 10px 8px;
+  color: #333;
+  font-weight: bold;
+}
+
+.card h3:not(.rr) {
+  font-size: 1.4rem;
+  margin: 5px 8px;
+  color: #000;
+  background-color: #c5c6c7;
+  width: max-content;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.card p {
+  font-size: 1.1rem;
+  margin: 5px 8px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.card h5 {
+  font-size: 1.4rem;
+  margin: 5px 8px;
+  color: #000;
+  font-weight: bold;
+}
+
+.rr {
+  display: flex;
+}
+.redux-btn {
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+  color: black;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.redux-btn:hover {
+  background-color: rgb(181, 176, 176);
+  color: #fff;
+}
+
+.goto-cart{
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+  color: black;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.goto-cart:hover {
+  background-color: rgb(181, 176, 176);
+  color: #fff;
+}
+
+.wish, .unwish {
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 20px;
+  right: 80px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+  background-color: transparent;
+}
+
+.wish:hover, .unwish:hover {
+  background-color: transparent;
+}
+
+
+
+.cat-items{
+  width: 80%;
+  margin-left: 130px;
+  margin-top: 20px;
+  display: flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 60px;
+}
+
+.cat-items button{
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+  background-color: #66fcf1;
+  
+}
+
+.cat-items img{
+  height: 50px;
+  width: 50px;
+}
+
+/* Product details */
+.pro-det {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.pro-img-container {
+  /* flex: 1; */
+  max-width: 50%;
+  margin-right: 20px;
+  max-height: 50%;
+}
+
+.pro-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.pro-abt {
+  flex: 2;
+  font-size: 30px;
+  max-width: 60%;
+}
+
+.rev-rat {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.goto, .redux{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.goto img, .redux img {
+  height: 40px;
+  width: 40px;
+}
+
+.payform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  
+  background-color: #f2f2f2;
+}
+
+.pay {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.pay input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.pay input:focus {
+  border-color: #66fcf1;
+  outline: none;
+}
+
+.pay .card input {
+  display: block;
+}
+
+.pay .add input {
+  display: block;
+}
+
+button[type="submit"] {
+  background-color: #66fcf1;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #66fcf1;
+}
+
+
+/* course */
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.course-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  height: 180px;
+  color: #000;
+  box-shadow: 0 4px 8px fff(0, 0, 0, 0.2);
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.course-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.course-details {
+  position: relative;
+  z-index: 2;
+}
+
+.course-details h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.course-details p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: white;
+}
+
+
+/* course content */
+.coursemain {
+  display: flex;
+  margin: 20px;
+  height: calc(100vh - 40px);
+}
+
+.sidebar {
+  display: flex;
+  background-color: #f8f9fa;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  overflow-y: auto;
+  width: 30%;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.list {
+  margin-bottom: 10px;
+  border: 1px solid black;
+  margin-left: -170px;
+  width: 290%;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 25px;
+  border-radius: 5px;
+}
+
+.list.active {
+  background-color: #1f2833;
+  color: #fff;
+  font-weight: bold;
+}
+
+.list.completed {
+  background-color: #e6ffe6; /* Pale green color for completed videos */
+}
+
+.tick-mark {
+  margin-left: 10px;
+  color: green;
+}
+
+.list:hover {
+  background-color: #e9ecef;
+}
+
+.showvideo {
+  width: 70%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.videoarea {
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.videoarea video {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.videoarea h3 {
+  font-size: 20px;
+  margin-top: 0;
+  color: #343a40;
+}
+
+/* Overall course progress */
+.course-progress {
+  margin-top: 20px;
+}
+
+.course-progress h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.progress {
+  width: 100%;
+  height: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #00d4ff);
+  transition: width 0.2s ease;
+}
+
+/* Completion message */
+.completion-message {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.completion-message button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.completion-message button:hover {
+  background-color: #45a049;
+}

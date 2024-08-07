@@ -1,0 +1,101 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+  
+.auth-form {
+    width: 350px;
+    height: 550px;
+    padding: 0 30px 40px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+  }
+  
+  .auth-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom right, #66fcf1, rgba(4, 37, 66, 0.067));
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    clip-path: ellipse(100% 50% at 50% 0%);
+  }
+  
+  .auth-form h2 {
+    margin-top: 50px; 
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #000; 
+    position: relative;
+  }
+  
+  .auth-form p {
+    margin-bottom: 30px;
+    color: #000; 
+    font-size: 20px;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .input-container input {
+    padding: 10px;
+    height: 45px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  
+  .forgot-password {
+    display: block;
+    margin-bottom: 20px;
+    color: #bbb;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  
+  .auth-btn {
+    background: linear-gradient(to right, #f8b600, #ff8a00);
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    
+  }
+  
+  .signup-link{
+    color: #000;
+    font-size: 40px;
+  }
+  .signin-link {
+    color: #000;
+    font-size: 40px;
+  }
+  
+  .signup-link a, .signin-link a {
+    color: #ff8a00;
+    text-decoration: none;
+    font-size: 24px;
+  }
+  
+  .signup-link a:hover, .signin-link a:hover {
+    text-decoration: underline;
+  }
+  
