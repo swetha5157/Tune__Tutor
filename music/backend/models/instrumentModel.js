@@ -1,6 +1,10 @@
 const mongoose=require('mongoose')
 const instrumentSchema=new mongoose.Schema({
-      id:String,
+      id:{
+            type: String,
+            required: true,
+            unique: true,
+      },
       name:String,
       category:String,
       description:String,

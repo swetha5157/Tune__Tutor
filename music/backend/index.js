@@ -9,7 +9,7 @@ const cartRoutes=require("./routes/cartRoutes")
 
 //mongo connect
 mongoose.connect(
-    // "mongodb+srv://swethasuresh799:Swetha@mern-project.bwolsuf.mongodb.net/tune_tutor"
+   // "mongodb+srv://swethasuresh799:Swetha@mern-project.bwolsuf.mongodb.net/tune_tutor"
    "mongodb://localhost:27017/e-commerce"
 ).then(
     ()=>{console.log("Connected to DB")}
