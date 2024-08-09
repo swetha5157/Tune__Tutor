@@ -6,7 +6,8 @@ app.use(express.json());
 const instrumentRoutes=require("./routes/instrumentRoutes")
 const userRoutes=require("./routes/userRoutes")
 const cartRoutes=require("./routes/cartRoutes")
-
+const wishRoutes=require("./routes/wishlistRoutes")
+const orderRoutes=require("./routes/orderRoutes")
 //mongo connect
 mongoose.connect(
    // "mongodb+srv://swethasuresh799:Swetha@mern-project.bwolsuf.mongodb.net/tune_tutor"
@@ -18,6 +19,8 @@ mongoose.connect(
 app.use('/instruments',instrumentRoutes);
 app.use("/users",userRoutes);
 app.use("/carts",cartRoutes);
+app.use("/wish",wishRoutes);
+app.use("/order",orderRoutes);
 app.listen(4000,()=>{
     console.log('App is running at port 4000');
 });
