@@ -13,6 +13,7 @@ const auth=(req,res,next)=>{
         req.user=decoded;
         next();
     }catch(e){
+        console.error("Token verification failed:", e.message); 
         res.status(401).json({error:"Token is not valid"})
     }
 };

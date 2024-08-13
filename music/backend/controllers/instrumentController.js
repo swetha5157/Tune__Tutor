@@ -9,6 +9,18 @@ exports.getInstruments=async(req,res)=>{
     }
 }
 
+
+exports.getInstrumentById=async(req,res)=>{
+  const {id}=req.params;
+  try{
+      const instrument=await Instrument.findOne({id:id})
+      res.send(instrument);
+  }catch(e){
+      console.log(e);
+  }
+}
+
+
 exports.createInstrument=async(req,res)=>{
     console.log(req.body)
   const {name,category,description,brief_description,rating,pricing,review_count,image_url}= req.body;
@@ -33,28 +45,30 @@ res.status(200).json("Instrument added successfully")
 }
 
 exports.updateInstrument=async(req,res)=>{
-    const{id}=req.params;
-    const { name, category, description, brief_description, rating, pricing, review_count, image_url } = req.body;
-    try{
-      const updatedInstrument=await Instrument.findOneAndUpdate(
-        { id: id },
-        { name, category, description, brief_description, rating, pricing, review_count, image_url },
-        {new:true}
+  const { id } = req.params;
+  const { name, category, description, brief_description, rating, pricing, review_count, image_url } = req.body;
+  try {
+      const updatedInstrument = await Instrument.findOneAndUpdate(
+          { id: id },
+          { name, category, description, brief_description, rating, pricing, review_count, image_url },
+          { new: true }
       );
-      if(!updatedInstrument) return res.status(404).json('Instrument not found');
-      res.status(500).json('Instrument updated successfully');
-    }catch(e){
+      if (!updatedInstrument) return res.status(404).json('Instrument not found');
+      res.status(200).json('Instrument updated successfully');
+  } catch (e) {
       console.log(e);
-    }
+      res.status(500).json('An error occurred while updating the instrument');
+  }
 }
 
 exports.deleteInstrument=async(req,res)=>{
-   const {id}=req.params;
-   try{
-    const deletedInstrument=await Instrument.findOneAndDelete({id:id});
-    if(!deletedInstrument) return res.status(404).json('Instrument not found');
-    res.status(500).json('Instrument deleted');
-   }catch(e){
-    console.log(e);
-   }
+  const { id } = req.params;
+  try {
+      const deletedInstrument = await Instrument.findOneAndDelete({ id: id });
+      if (!deletedInstrument) return res.status(404).json('Instrument not found');
+      res.status(200).json('Instrument deleted successfully');
+  } catch (e) {
+      console.log(e);
+      res.status(500).json('An error occurred while deleting the instrument');
+  }
 }

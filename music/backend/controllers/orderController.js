@@ -1,20 +1,28 @@
 const Order = require("../models/orderModel");
 const Cart = require("../models/cartModel");
 const Instrument=require("../models/instrumentModel");
+const {generateEmailBody} =require("../nodemailer/mailTemplate");
+const {sendEmail}=require("../nodemailer/mailer");
 exports.createOrder = async (req, res) => {
+    console.log("Received order data:", req.body);
     const { user_id } = req.user;
     const { user_email, username, address, phoneno, selectedItems } = req.body;
 
     try {
-        //to check whether a cart is present to select the checkout order items
-        const cart = await Cart.findOne({ user_id });
-
-        //if a cart is empty say there is no cart
-        if (!cart || cart.products.length === 0) {
-            return res.status(400).json({ message: "Cart is empty" });
+        // Ensure selectedItems is provided
+        if (!selectedItems || !Array.isArray(selectedItems) || selectedItems.length === 0) {
+            return res.status(400).json({ message: "No items selected for checkout" });
         }
 
-        //to filter only the selected items sent throught the body
+        // Check if a cart exists for the user
+        const cart = await Cart.findOne({ user_id });
+
+        // Ensure the cart exists and contains products
+        if (!cart || !Array.isArray(cart.products) || cart.products.length === 0) {
+            return res.status(400).json({ message: "Cart is empty or products are missing" });
+        }
+
+        // Filter only the selected items
         const products = cart.products
             .filter(item => selectedItems.includes(item.product_id))
             .map(item => ({
@@ -22,11 +30,29 @@ exports.createOrder = async (req, res) => {
                 quantity: item.quantity,
             }));
 
-        if(products.length === 0){
+        if (products.length === 0) {
             return res.status(400).json({ message: "No items selected for checkout" });
         }
 
-        // else create a new Order with the selected items 
+        // Calculate total amount
+        let totalAmount = 0;
+        const detailedProducts = await Promise.all(
+            products.map(async (p) => {
+                const productDetails = await Instrument.findOne({ id: p.product_id });
+                if (!productDetails) {
+                    throw new Error(`Product with ID ${p.product_id} not found`);
+                }
+                totalAmount += productDetails.pricing * p.quantity;
+                return {
+                    product_id: productDetails.id,
+                    name: productDetails.name,
+                    price: productDetails.pricing,
+                    quantity: p.quantity,
+                };
+            })
+        );
+
+        // Create a new Order
         const newOrder = new Order({
             user_id,
             user_email,
@@ -35,14 +61,23 @@ exports.createOrder = async (req, res) => {
             phoneno,
             products,
             orderedDate: new Date(),
-            deliveryDate: new Date(new Date().setDate(new Date().getDate() + 10)), 
+            deliveryDate: new Date(new Date().setDate(new Date().getDate() + 10)),
         });
 
         const savedOrder = await newOrder.save();
 
-        //save the cart after removing the selected items rom the cart
+        // Update the cart after removing the selected items
         cart.products = cart.products.filter(item => !selectedItems.includes(item.product_id));
         await cart.save();
+
+        // Send email with all products' details
+        const emailContent = generateEmailBody({
+            products: detailedProducts,
+            totalAmount: totalAmount + 100, // Include additional charges if needed
+            deliveryDate: newOrder.deliveryDate.toDateString(),
+        }, "CHECKOUT_CONFIRMATION");
+
+        await sendEmail(emailContent, user_email);
 
         res.status(201).json({ message: "Order created successfully", order: savedOrder });
     } catch (error) {
@@ -50,6 +85,7 @@ exports.createOrder = async (req, res) => {
         res.status(500).json({ message: "Failed to create order", error: error.message });
     }
 };
+
 
 
 

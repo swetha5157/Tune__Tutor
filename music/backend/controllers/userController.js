@@ -3,7 +3,7 @@ const {v4:uuidv4}=require('uuid')
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 exports.login=async(req,res)=>{
-    const {email,password}=req.body;
+    const {email,password,role}=req.body;
     try{
         const user=await User.findOne({email});
         if(!user){
@@ -13,11 +13,15 @@ exports.login=async(req,res)=>{
         if(!isMatch){
             res.status(400).json("Invalid pw")
         }
-        const token=jwt.sign({user_id:user._id},"secret_token_key",{
+        const token=jwt.sign({user_id:user._id,  role: user.role},"secret_token_key",{
             //here user._id is the mongodb id..
-            expiresIn:"1h",
+            expiresIn:"48h",
         });
-        return res.status(200).json(token);
+        return res.status(200).json({token, user: {
+            name: user.name,
+            email: user.email,
+            role: user.role,
+        }});
     }catch(e){console.log(e);}
 }
 
@@ -31,10 +35,11 @@ exports.getUsers=async(req,res)=>{
 }
 
 exports.signup=async(req,res)=>{
-    const {name,email,password}=req.body;
+    const {name,email,password,role}=req.body;
+    
     try{
         const newUser=new User({
-            name,email,password
+            name,email,password,role
         })
      await  newUser.save()
      return res.status(200).json('User registered successfully')
