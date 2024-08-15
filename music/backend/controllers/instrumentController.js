@@ -8,17 +8,32 @@ exports.getInstruments=async(req,res)=>{
         console.log(e);
     }
 }
+exports.getInstrumentById = async (req, res) => {
+  const { id } = req.params;
+  console.log(`Fetching instrument with ID: ${id}`);
+  
+  try {
+    // Check if ID is in a valid format
+    if (!id) {
+      console.error('No ID provided');
+      return res.status(400).json({ message: 'No ID provided' });
+    }
 
+    const instrument = await Instrument.findOne({ id: id });    
+    if (!instrument) {
+      console.log('Instrument not found');
+      return res.status(404).json({ message: 'Instrument not found' });
+    }
 
-exports.getInstrumentById=async(req,res)=>{
-  const {id}=req.params;
-  try{
-      const instrument=await Instrument.findOne({id:id})
-      res.send(instrument);
-  }catch(e){
-      console.log(e);
+    console.log('Instrument found:', instrument);
+    res.json(instrument);
+  } catch (e) {
+    console.error('Error fetching instrument:', e);
+    res.status(500).json({ message: 'Server error' });
   }
-}
+};
+
+
 
 
 exports.createInstrument=async(req,res)=>{

@@ -8,6 +8,7 @@ const wishRoutes = require("./routes/wishlistRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const emailRoutes=require("./routes/emailRoutes");
 const courseRoutes=require("./routes/courseRoutes")
+const analyticsRoutes=require('./routes/analyticsRoutes');
 const app = express();
 
 
@@ -35,7 +36,7 @@ app.use("/wish", wishRoutes);
 app.use("/order", orderRoutes);
 app.use('/email', emailRoutes);
 app.use('/courses', courseRoutes);
-
+app.use('/analytics',analyticsRoutes);
 
 app.listen(4000, () => {
     console.log('App is running at port 4000');

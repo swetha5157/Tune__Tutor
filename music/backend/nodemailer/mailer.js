@@ -9,6 +9,7 @@ const transporter = nodemailer.createTransport({
     user: "tuneemporium@outlook.com",
     pass: "Emporiumtune22",
   },
+  
 });
 
 exports.sendEmail = async (emailContent, sendTo) => {
